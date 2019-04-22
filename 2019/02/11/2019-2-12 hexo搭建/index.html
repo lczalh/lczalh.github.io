@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -118,7 +118,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -307,6 +307,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
 
@@ -333,15 +338,15 @@
 <h2 id="4-安装Git"><a href="#4-安装Git" class="headerlink" title="4. 安装Git"></a>4. 安装Git</h2><p><code>$ brew install git</code><br>验证是否安装:  <code>$ git --version</code></p>
 <h2 id="5-安装Hexo"><a href="#5-安装Hexo" class="headerlink" title="5. 安装Hexo"></a>5. 安装Hexo</h2><p><code>$ sudo npm install hexo-cli -g</code></p>
 <h2 id="6-创建博客"><a href="#6-创建博客" class="headerlink" title="6. 创建博客"></a>6. 创建博客</h2><p><code>$ hexo init lczalh.github.io</code>                          <code>lczalh.github.io</code>为文件夹名称 可自定义<br>执行成功后，会创建出一个名为 <code>lczalh.github.io</code> 的文件夹</p>
-<p><strong> 基础配置: 打开文件位置 <code>lczalh.github.io/_config.yml</code> </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: lczalh    // 博客名称</span><br><span class="line">author: Liu Chao Zheng  // 你的名字</span><br><span class="line">language: zh-Hans    // 中文</span><br><span class="line">theme: new-vno   // 主题名称</span><br><span class="line">deploy:</span><br><span class="line">  type: git    // Git发布</span><br><span class="line">  repo: https://github.com/lczalh/lczalh.github.io.git    // 刚才创建的Github仓库</span><br></pre></td></tr></table></figure></p>
+<p><strong> 基础配置: 打开文件位置 <code>lczalh.github.io/_config.yml</code> </strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">title</span>: lczalh    <span class="comment">// 博客名称</span></span><br><span class="line"><span class="attribute">author</span>: Liu Chao Zheng  <span class="comment">// 你的名字</span></span><br><span class="line"><span class="attribute">language</span>: zh-Hans    <span class="comment">// 中文</span></span><br><span class="line"><span class="attribute">theme</span>: new-vno   <span class="comment">// 主题名称</span></span><br><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git    <span class="comment">// Git发布</span></span><br><span class="line">  <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/lczalh/lczalh.github.io.git    // 刚才创建的Github仓库</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="7-更改主题"><a href="#7-更改主题" class="headerlink" title="7. 更改主题"></a>7. 更改主题</h2><p>进入上一步创建的文件夹: <code>$ cd lczalh.github.io</code><br>安装主题: <code>$ git clone https://github.com/monniya/hexo-theme-new-vno.git themes/new-vno</code> </p>
 <p><a href="https://github.com/monniya/hexo-theme-new-vno" title="主题配置" target="_blank" rel="noopener">主题配置</a>                     <a href="https://hexo.io/themes/" title="更多主题" target="_blank" rel="noopener">更多主题</a></p>
-<h2 id="8-写博客"><a href="#8-写博客" class="headerlink" title="8. 写博客"></a>8. 写博客</h2><p>博客路径: <code>lczalh.github.io/source/_posts</code> 在这里创建你的第一篇博客 例如创建: <strong> 2019-2-12 hexo搭建.md </strong>  内容如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">layout: post</span><br><span class="line">title: &quot;mac OS 搭建Hexo个人博客&quot;</span><br><span class="line">date: 2019-02-11 18:00:41</span><br><span class="line">tags: 博客</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可	利用靓丽的主题生成静态网页。[Hexo文档](https://hexo.io/zh-cn/docs/ &quot;Hexo文档&quot;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-写博客"><a href="#8-写博客" class="headerlink" title="8. 写博客"></a>8. 写博客</h2><p>博客路径: <code>lczalh.github.io/source/_posts</code> 在这里创建你的第一篇博客 例如创建: <strong> 2019-2-12 hexo搭建.md </strong>  内容如下:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">"mac OS 搭建Hexo个人博客"</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="bullet">-02</span><span class="bullet">-11</span> <span class="number">18</span><span class="string">:00:41</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">博客</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">Hexo</span> <span class="string">是一个快速、简洁且高效的博客框架。Hexo</span> <span class="string">使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可</span>	<span class="string">利用靓丽的主题生成静态网页。[Hexo文档](https://hexo.io/zh-cn/docs/</span> <span class="string">"Hexo文档"</span><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="9-测试是否正常"><a href="#9-测试是否正常" class="headerlink" title="9. 测试是否正常"></a>9. 测试是否正常</h2><p>启动测试服务: <code>$ hexo s</code>  在浏览器中输入<a href="在浏览器中输入https://localhost:4000 访问">https://localhost:4000</a> 访问</p>
 <h2 id="10-安装自动部署发布工具"><a href="#10-安装自动部署发布工具" class="headerlink" title="10. 安装自动部署发布工具"></a>10. 安装自动部署发布工具</h2><p><code>$ sudo npm install hexo-deployer-git --save</code></p>
 <h2 id="11-发布博客"><a href="#11-发布博客" class="headerlink" title="11. 发布博客"></a>11. 发布博客</h2><p>切换到root用户(有权限，跳过此行): <code>$ sudo -s</code><br>发布博客: <code>$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></p>
 <p><strong> 每次写完博客，执行下这两个命令就可以了 </strong></p>
-<h2 id="12-错误"><a href="#12-错误" class="headerlink" title="12. 错误"></a>12. 错误</h2><p><strong> 1.WARN No layout: index.html </strong><br>解决方案: 安装/更新主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd lczalh.github.io</span><br><span class="line">$ git clone https://github.com/monniya/hexo-theme-new-vno.git themes/new-vno</span><br></pre></td></tr></table></figure></p>
+<h2 id="12-错误"><a href="#12-错误" class="headerlink" title="12. 错误"></a>12. 错误</h2><p><strong> 1.WARN No layout: index.html </strong><br>解决方案: 安装/更新主题<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">cd</span> lczalh.github.io</span><br><span class="line">$ git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/monniya/hexo-theme-<span class="keyword">new</span>-vno.git themes/<span class="keyword">new</span>-vno</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -351,6 +356,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Liu Chao Zheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Liu Chao Zheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -561,12 +595,32 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Gemini
   </a>
 </div>
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>总访客
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
         
       </div>
@@ -640,6 +694,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
