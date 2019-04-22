@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="iOS,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lczalh" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Fastlane是一套使用Ruby写的自动化工具集，旨在简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。Fastlane文档 1. 安装Xcode命令行工具安装命令: $ xcode-select --install提示: xcode-select: error: command line tools are alrea">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS Fastlane自动化打包ipa">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/2019-2-28 Fastlane自动化打包/index.html">
+<meta property="og:site_name" content="lczalh">
+<meta property="og:description" content="Fastlane是一套使用Ruby写的自动化工具集，旨在简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。Fastlane文档 1. 安装Xcode命令行工具安装命令: $ xcode-select --install提示: xcode-select: error: command line tools are alrea">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/fastlane初始化.png?raw=true">
+<meta property="og:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/Appfile.png?raw=true">
+<meta property="og:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/Fastfile.png?raw=true">
+<meta property="og:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/match.png?raw=true">
+<meta property="og:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/ipa.png?raw=true">
+<meta property="og:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/7.1问题.png?raw=true">
+<meta property="og:updated_time" content="2019-04-22T08:26:04.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS Fastlane自动化打包ipa">
+<meta name="twitter:description" content="Fastlane是一套使用Ruby写的自动化工具集，旨在简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。Fastlane文档 1. 安装Xcode命令行工具安装命令: $ xcode-select --install提示: xcode-select: error: command line tools are alrea">
+<meta name="twitter:image" content="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/fastlane初始化.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/2019-2-28 Fastlane自动化打包/">
+
+
+
+
+
+  <title>iOS Fastlane自动化打包ipa | lczalh</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lczalh</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/2019-2-28 Fastlane自动化打包/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liu Chao Zheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lczalh">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS Fastlane自动化打包ipa</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T18:00:41+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Fastlane是一套使用Ruby写的自动化工具集，旨在简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App。<a href="https://docs.fastlane.tools/" title="Fastlane文档" target="_blank" rel="noopener">Fastlane文档</a></p>
+<h2 id="1-安装Xcode命令行工具"><a href="#1-安装Xcode命令行工具" class="headerlink" title="1. 安装Xcode命令行工具"></a>1. 安装Xcode命令行工具</h2><p>安装命令: <code>$ xcode-select --install</code><br>提示: <code>xcode-select: error: command line tools are already installed, use &quot;Software Update&quot; to install updates</code>  表示已经安装</p>
+<h2 id="2-安装Fastlane"><a href="#2-安装Fastlane" class="headerlink" title="2. 安装Fastlane"></a>2. 安装Fastlane</h2><p>安装命令: <code>$ sudo gem install fastlane -NV</code> 或 <code>brew cask install fastlane</code><br>检查是否安装成功 <code>fastlane --version</code></p>
+<h2 id="3-初始化Fastlane"><a href="#3-初始化Fastlane" class="headerlink" title="3. 初始化Fastlane"></a>3. 初始化Fastlane</h2><p>cd到项目路径：<code>$ cd /Users/tanitsubukousha/Desktop/GLGL</code><br>初始化Fastlane：<code>$ fastlane init</code><br><img src="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/fastlane初始化.png?raw=true" alt="markdown" title="Fastlane初始化"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 📸  Automate screenshots (自动化截图)</span><br><span class="line">2. 👩‍✈️  Automate beta distribution to TestFlight (自动testfilght型配置)</span><br><span class="line">3. 🚀  Automate App Store distribution (自动发布型配置)</span><br><span class="line">4. 🛠  Manual setup - manually setup your project to automate your (需要手动配置内容)</span><br></pre></td></tr></table></figure></p>
+<p>我这里选择 4  等待一下会让你按回车 (共三次)  即安装成功！<br>在项目中会生成 fastlane文件夹、Gemfile、Gemfile.lock<br>fastlane文件夹：Appfile (存储有关开发者账号相关信息)、Fastfile (核心文件，主要用于 命令行调用和处理具体的流程)</p>
+<h2 id="4-文件配置"><a href="#4-文件配置" class="headerlink" title="4. 文件配置"></a>4. 文件配置</h2><h3 id="4-1-打开Appfile文件-修改以下配置"><a href="#4-1-打开Appfile文件-修改以下配置" class="headerlink" title="4.1 打开Appfile文件 修改以下配置"></a>4.1 打开Appfile文件 修改以下配置</h3><p><img src="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/Appfile.png?raw=true" alt="markdown" title="Appfile"></p>
+<h3 id="4-2-打开Fastfile文件-修改以下配置"><a href="#4-2-打开Fastfile文件-修改以下配置" class="headerlink" title="4.2 打开Fastfile文件 修改以下配置"></a>4.2 打开Fastfile文件 修改以下配置</h3><p><img src="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/Fastfile.png?raw=true" alt="markdown" title="Fastfile"></p>
+<h3 id="4-3-关于export-method方法"><a href="#4-3-关于export-method方法" class="headerlink" title="4.3 关于export_method方法"></a>4.3 关于export_method方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app-store,   #AppStore正式生产环境包</span><br><span class="line">ad-hoc,  #生产测试包</span><br><span class="line">enterprise,  #企业包</span><br><span class="line">development  #开发测试包</span><br></pre></td></tr></table></figure>
+<h2 id="5-证书管理插件"><a href="#5-证书管理插件" class="headerlink" title="5. 证书管理插件"></a>5. 证书管理插件</h2><p>match是fastlane的一个功能组件, 能自动从苹果官方上下载证书和pp文件同步到我们的git仓库中<br>cd到项目路径：<code>$ cd /Users/tanitsubukousha/Desktop/GLGL</code><br>安装命令: <code>$ fastlane match init</code><br><img src="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/match.png?raw=true" alt="markdown" title="match"></p>
+<h3 id="5-1-先删除旧证书和pp文件"><a href="#5-1-先删除旧证书和pp文件" class="headerlink" title="5.1 先删除旧证书和pp文件"></a>5.1 先删除旧证书和pp文件</h3><p>分别执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ fastlane match nuke development</span><br><span class="line">$ fastlane match nuke distribution</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-2-生成证书和pp文件"><a href="#5-2-生成证书和pp文件" class="headerlink" title="5.2 生成证书和pp文件"></a>5.2 生成证书和pp文件</h3><p>cd到项目路径：<code>$ cd /Users/tanitsubukousha/Desktop/GLGL</code><br>分别执行以下命令（首次执行时,会要求输入Git仓库密码,用来对证书进行加密,后续其他机器获取证书时使用该密码进行解密）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ fastlane match development</span><br><span class="line">$ fastlane match adhoc</span><br><span class="line">$ fastlane match appstore</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-打包ipa"><a href="#6-打包ipa" class="headerlink" title="6. 打包ipa"></a>6. 打包ipa</h2><p>打包命: <code>$ fastlane test</code>  test是Fastfile文件中的lane名称<br><img src="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/ipa.png?raw=true" alt="markdown" title="ipa"></p>
+<h2 id="7-问题"><a href="#7-问题" class="headerlink" title="7. 问题"></a>7. 问题</h2><h3 id="7-1-Automatic-signing-is-disabled-and-unable-to-generate-a-profile-To-enable-automatic-signing-pass-allowProvisioningUpdates-to-xcodebuild"><a href="#7-1-Automatic-signing-is-disabled-and-unable-to-generate-a-profile-To-enable-automatic-signing-pass-allowProvisioningUpdates-to-xcodebuild" class="headerlink" title="7.1 Automatic signing is disabled and unable to generate a profile. To enable automatic signing, pass -allowProvisioningUpdates to xcodebuild."></a>7.1 <code>Automatic signing is disabled and unable to generate a profile. To enable automatic signing, pass -allowProvisioningUpdates to xcodebuild.</code></h3><p>Xcode 9 之后禁止其直接访问钥匙串, 导致持续集成时执行 xcode build 会出现找不到证书或证书配置文件。修改 fastlane 配置文件来解决<br><img src="https://github.com/lczalh/blog/blob/master/source/images/2019-2-28 Fastlane自动化打包/7.1问题.png?raw=true" alt="markdown" title="7.1问题"><br><code>export_xcargs: &quot;-allowProvisioningUpdates&quot;</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/11/2019-2-12 hexo搭建/" rel="next" title="mac OS 搭建Hexo个人博客">
+                <i class="fa fa-chevron-left"></i> mac OS 搭建Hexo个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/04/2019-3-04 XcodeBuild打包ipa/" rel="prev" title="iOS XcodeBuild打包ipa">
+                iOS XcodeBuild打包ipa <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Liu Chao Zheng">
+          <p class="site-author-name" itemprop="name">Liu Chao Zheng</p>
+           
+              <p class="site-description motion-element" itemprop="description">少一点抱怨，多一点努力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lczalh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装Xcode命令行工具"><span class="nav-number">1.</span> <span class="nav-text">1. 安装Xcode命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装Fastlane"><span class="nav-number">2.</span> <span class="nav-text">2. 安装Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-初始化Fastlane"><span class="nav-number">3.</span> <span class="nav-text">3. 初始化Fastlane</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-文件配置"><span class="nav-number">4.</span> <span class="nav-text">4. 文件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-打开Appfile文件-修改以下配置"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 打开Appfile文件 修改以下配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-打开Fastfile文件-修改以下配置"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 打开Fastfile文件 修改以下配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-关于export-method方法"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 关于export_method方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-证书管理插件"><span class="nav-number">5.</span> <span class="nav-text">5. 证书管理插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-先删除旧证书和pp文件"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 先删除旧证书和pp文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-生成证书和pp文件"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 生成证书和pp文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-打包ipa"><span class="nav-number">6.</span> <span class="nav-text">6. 打包ipa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-问题"><span class="nav-number">7.</span> <span class="nav-text">7. 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-Automatic-signing-is-disabled-and-unable-to-generate-a-profile-To-enable-automatic-signing-pass-allowProvisioningUpdates-to-xcodebuild"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Automatic signing is disabled and unable to generate a profile. To enable automatic signing, pass -allowProvisioningUpdates to xcodebuild.</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liu Chao Zheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
